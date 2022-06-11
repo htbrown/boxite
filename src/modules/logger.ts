@@ -6,7 +6,11 @@ export default class Logger {
         let dd = String(date.getDate()).padStart(2, '0');
         let mm = String(date.getMonth() + 1).padStart(2, '0');
         let yyyy = date.getFullYear();
-        return `${dd}/${mm}/${yyyy}`;
+
+        let hh = String(date.getHours()).padStart(2, '0');
+        let MM = String(date.getMinutes()).padStart(2, '0');
+        let ss = String(date.getSeconds()).padStart(2, '0');
+        return `${dd}/${mm}/${yyyy} ${hh}:${MM}:${ss}`;
     }
 
     log(type: string, message: string, error?: Error, short?: boolean): void {
