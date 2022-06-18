@@ -5,4 +5,5 @@ export default interface User {
     preferences: object;
     firstname: string;
     lastname: string;
+    admin: boolean;
 }
