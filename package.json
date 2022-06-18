@@ -6,7 +6,9 @@
   "scripts": {
     "start": "node .",
     "start-dev": "npm-run-all build start",
-    "build": "tsc && cp -r ./src/public ./dist"
+    "build": "npm-run-all build-css build-src",
+    "build-src": "tsc && cp -r ./src/public ./dist",
+    "build-css": "sass ./src/public/static/scss/bulma/bulma.sass ./src/public/static/css/bulma/bulma.css --style=compressed"
   },
   "repository": {
     "type": "git",
@@ -23,6 +25,7 @@
     "dotenv": "^16.0.1",
     "ejs": "^3.1.8",
     "express": "^4.18.1",
+    "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.17.3",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
@@ -37,6 +40,7 @@
     "@types/passport-local": "^1.0.34",
     "@types/rethinkdb": "^2.3.17",
     "nodemon": "^2.0.16",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.52.3"
   }
 }
