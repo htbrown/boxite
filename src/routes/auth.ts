@@ -34,7 +34,7 @@ export let router = express.Router();
 
 router.route('/login')
     .get((req, res) => {
-        res.render('login');
+        res.render('login', { title: 'Login', layout: 'layouts/login' });
     })
     .post(passport.authenticate('local', {
         successReturnToOrRedirect: '/',

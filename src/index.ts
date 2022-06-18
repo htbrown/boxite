@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import path from 'path';
 import session from 'express-session';
+import expressLayouts from 'express-ejs-layouts';
 
 dotenv.config();
 const PORT = process.env.PORT || 80;
@@ -14,9 +15,10 @@ export const database = new Database(logger);
 
 const server = express();
 
+server.use(expressLayouts);
 server.set('view engine', 'ejs');
 server.set('views', path.join(__dirname, '/public/views'));
-server.use('/static', express.static('./public/static'));
+server.use('/static', express.static(path.join(__dirname, '/public/static')));
 
 server.use(express.json());
 server.use(express.urlencoded({ extended: false }));
@@ -35,7 +37,7 @@ import { router as authRouter } from './routes/auth';
 server.use('/', authRouter);
 
 server.get('/', (req, res) => {
-    res.render('index');
+    res.render('index', { title: 'Home', layout: 'layouts/blank' });
 })
 
 server.listen(process.env.PORT || 80, () => {
