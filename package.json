@@ -5,7 +5,7 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "node .",
-    "start-dev": "npm-run-all build start",
+    "start-dev": "nodemon --watch src/ --ext ts,json,ejs,css --exec npm-run-all build-src start",
     "build": "npm-run-all build-css build-src",
     "build-src": "tsc && cp -r ./src/public ./dist",
     "build-css": "sass ./src/public/static/scss/bulma/bulma.sass ./src/public/static/css/bulma/bulma.css --style=compressed"
@@ -34,6 +34,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
+    "@types/express-ejs-layouts": "^2.5.0",
     "@types/express-session": "^1.17.4",
     "@types/node": "^17.0.42",
     "@types/passport": "^1.0.9",
