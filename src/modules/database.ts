@@ -3,7 +3,7 @@ import r from 'rethinkdb';
 
 export default class Database {
     private logger: Logger;
-    public connection: r.Connection;
+    public static connection: r.Connection;
 
     constructor(logger: Logger) {
         this.logger = logger;
@@ -16,8 +16,8 @@ export default class Database {
             db: process.env.DB_DATABASE || 'boxite'
         }, (err, conn) => {
             if (err) throw new Error(err.message);
-            this.connection = conn;
-            this.logger.log('rethinkdb', 'Connected to RethinkDB.')
+            Database.connection = conn;
+            this.logger.log('rethinkdb', 'SUC', 'Connected to RethinkDB.');
         })
     }
 }

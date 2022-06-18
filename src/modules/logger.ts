@@ -13,8 +13,8 @@ export default class Logger {
         return `${dd}/${mm}/${yyyy} ${hh}:${MM}:${ss}`;
     }
 
-    log(type: string, message: string, error?: Error, short?: boolean): void {
-        let prefix = this.currentDateTime + ` (${type}) `
+    log(type: string, level: string, message: string, error?: Error, short?: boolean): void {
+        let prefix = this.currentDateTime + ` (${type}) ${level}: `
         console.log(`${prefix}${message.replace('\\n', '\\n' + ' '.repeat(prefix.length))}`);
         if (error) {
             if (short) return console.log(' '.repeat(prefix.length) + 'Message: ' + error.message);
